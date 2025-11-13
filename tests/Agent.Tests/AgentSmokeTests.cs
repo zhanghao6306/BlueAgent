@@ -4,6 +4,8 @@ using Agent.Tools;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
+namespace Agent.Tests;
+
 public class AgentSmokeTests
 {
     private IAgent CreateAgent()

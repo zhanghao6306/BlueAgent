@@ -6,5 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agent.Abstractions\Agent.Abstractions.csproj" />
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.67.1" />
   </ItemGroup>
 </Project>
