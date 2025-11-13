@@ -1,5 +1,5 @@
 using Grpc.Core;
-using printercontrol;
+using Printercontrol;
 
 public class PrinterControlGrpcService : PrinterControl.PrinterControlBase
 {
