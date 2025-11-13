@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package agent;
+
+service AgentService {
+  rpc Run (RunRequest) returns (RunReply);
+  rpc ToolMeta (ToolMetaRequest) returns (ToolMetaReply);
+}
+
+message RunRequest {
+  string input = 1;
+}
+
+message RunReply {
+  bool success = 1;
+  string output = 2;
+}
+
+message ToolMetaRequest {
+}
+
+message ToolMetaReply {
+  repeated ToolMeta tools = 1;
+}
+
+message ToolMeta {
+  string name = 1;
+  string description = 2;
+}
