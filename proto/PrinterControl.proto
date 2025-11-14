@@ -1,0 +1,172 @@
+// Copyright 2018 Blue Image Inc.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.blueimage.rpc.printercontrol";
+option java_outer_classname = "PrinterControl";
+option objc_class_prefix = "BIPC";
+
+package printercontrol;
+
+// Interface exported by the server.
+service PrinterControl {
+	// 和配置相关的接口 
+  rpc GetConfigSection(StringInfo) returns (StringInfo) {}
+  rpc GetConfigValues(DummyParam) returns (StringInfo) {}
+  rpc SetConfigValues(StringInfo) returns (DummyParam) {}
+  
+  // Get all filters for open file dialog, by C# standard
+  rpc GetFileFilters(DummyParam) returns (StringInfo) {}
+  rpc GetFileInfo(JobFileConfig) returns (JobFileInfo) {}
+  
+  // 设置打印作业及打印控制
+  rpc SetPrintJobs(JobFileConfig) returns (DummyParam) {}
+  rpc StartPrint(DummyParam) returns (DummyParam) {}
+  rpc StopPrint(DummyParam) returns (DummyParam) {}
+  rpc PausePrint(DummyParam) returns (DummyParam) {}
+  rpc ResumePrint(DummyParam) returns (DummyParam) {}
+  rpc CalculateInk(DummyParam) returns (DummyParam) {}
+  rpc AppendFileToCurrentJob(FileToAppend) returns (DummyParam) {}
+  rpc AddPrintJobs(AddJobFileConfig) returns (StringInfo) {}
+  
+	// 获取需要用户人工干预的原因
+	rpc GetInterventionInfo(DummyParam) returns (StringInfo) {}
+	// 人工干预处理完成后，恢复打印
+	rpc InterventionResumePrint(DummyParam) returns (DummyParam) {}
+	// 获取打印机状态
+  rpc GetNotification(User) returns (stream Notification) {}
+	
+	//保存打印机设备相关配置参数接口
+	rpc SaveUserConfig(DummyParam) returns (DummyParam) {}
+	rpc SaveUserConfigAs(UserConfigFile) returns (DummyParam) {}
+	
+	// 调用机型插件
+	rpc Plugin_Load(PluginCommand) returns (DummyParam) {}
+	rpc Plugin_Get(PluginCommand) returns (StringInfo) {}
+	rpc Plugin_Set(PluginCommand) returns (DummyParam) {}
+	rpc Plugin_Run(PluginCommand) returns (DummyParam) {}
+	rpc Plugin_Stop(PluginCommand) returns (DummyParam) {}
+	
+	// 获取及更新墨量许可
+	rpc GetInkControlUpdateRequrement(DummyParam) returns (InkLicense) {}
+	rpc SetInkControlLicense(InkLicense) returns (DummyParam) {}
+	rpc GetInkControlInfo(DummyParam) returns (InkControl) {}
+	
+	// 获取/设置打印机校准信息
+	// 获取当前喷头配置--以下接口取消了
+	// rpc GetPrintHeadDataMap(DummyParam) returns (StringInfo) {}
+	// 设置当前喷头配置，本次修改后到服务程序退出前一直有效
+	// rpc SetPrintHeadDataMap(StringInfo) returns (DummyParam) {}
+	// 保存修改，永久有效，调用前UI需要提醒用户确认
+	// rpc SavePrintHeadDataMap(StringInfo) returns (DummyParam) {}
+	// 以上接口取消了
+  // A server-to-client streaming RPC.
+  //
+  // Obtains the Features available within the given Rectangle.  Results are
+  // streamed rather than returned at once (e.g. in a response message with a
+  // repeated field), as the rectangle may cover a large area and contain a
+  // huge number of features.
+  // rpc ListFeatures(Rectangle) returns (stream Feature) {}
+
+  // A client-to-server streaming RPC.
+  //
+  // Accepts a stream of Points on a route being traversed, returning a
+  // RouteSummary when traversal is completed.
+  // rpc RecordRoute(stream Point) returns (RouteSummary) {}
+
+  // A Bidirectional streaming RPC.
+  //
+  // Accepts a stream of RouteNotes sent while a route is being traversed,
+  // while receiving other RouteNotes (e.g. from other users).
+  // rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+}
+
+message DummyParam {
+	int32 dummy = 1;
+}
+
+// File full path
+message JobFileConfig {
+	string xmlconfig = 1;
+}
+
+// File full path and Index , Index Default = -1
+message AddJobFileConfig {
+	string xmlconfig = 1;
+	string insert_after = 2;
+}
+
+// Just pack a string
+message StringInfo {
+	string info = 1;
+}
+
+message UserConfigFile {
+	string filename = 1;
+	bool ignorSameAsDefault = 2;
+}
+
+message JobFileInfo {
+	// 作业信息
+	int32 imageLevel = 1;
+	int32 width = 2;
+	int32 height = 3;
+	int32 xdpi = 4;
+	int32 ydpi = 5;
+	int32 pages = 6;
+	int32 colormode = 7;
+	
+	// 返回的预览图的信息
+	int32 previewwidth = 8;
+	int32 previewheight = 9;
+	// 预览图颜色模式：
+	// 0：灰度图，每像素8bit
+	// 1：彩色RGB, 每像素24bit
+	// 2: 彩色CMYK，每像素32bit
+	int32 previewcolor = 10;
+	// 预览图的每行对齐到4字节边界
+	bytes preview = 11;
+	string modelname = 12;
+}
+
+message FileToAppend {
+	string filename = 1;
+	int32 copies = 2;
+	int32 fileindex = 3;
+	int32 appendindex = 4;
+}
+
+message User {
+	// 用户登录信息
+	string name = 1;
+	string password = 2;
+}
+
+message Notification {
+	int32 type = 1;			// 通知类型
+	int32 moduleid = 2;	// 模块id
+	string xml = 3;			// 通知内容
+}
+
+message PluginCommand {
+	string PluginName = 1;	// 插件名称
+	string Command = 2;			// 针对插件的命令参数
+}
+
+message InkLicense {
+	int32 size = 1;
+	bytes license = 2;
+}
+
+message InkInfo {
+	uint32 color = 1;			// 墨水颜色，其中0xFFFE为共享墨量，其他为定义的单色颜色码，不支持组合颜色码
+	float inkAllowed = 2;	// 授权使用的墨量 L
+	float inkUsed = 3;		// 已经使用的墨量 L
+};
+
+message InkControl {
+	bool isLicensed = 1;
+	bool isControlInkUsage = 2;
+	repeated InkInfo inkInfo= 3;
+}

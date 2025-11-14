@@ -16,4 +16,10 @@
     <ProjectReference Include="..\..\src\Agent.Core\Agent.Core.csproj" />
     <ProjectReference Include="..\..\src\Agent.Tools\Agent.Tools.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.*" PrivateAssets="All" />
+    <PackageReference Include="Google.Protobuf" Version="3.30.2" />
+    <Protobuf Include="..\..\proto\PrinterControl.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
+  </ItemGroup>
 </Project>

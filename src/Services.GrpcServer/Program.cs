@@ -25,5 +25,6 @@ builder.Services.AddSingleton<ITool, CalculatorTool>();
 
 var app = builder.Build();
 app.MapGrpcService<AgentGrpcService>();
+app.MapGrpcService<PrinterControlGrpcService>();
 app.MapGet("/", () => "BlueAgent gRPC Server is running.");
 app.Run();
