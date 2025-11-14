@@ -1,0 +1,15 @@
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\bin\Debug\net8.0\SimpleTest.exe
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\bin\Debug\net8.0\SimpleTest.deps.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\bin\Debug\net8.0\SimpleTest.runtimeconfig.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\bin\Debug\net8.0\SimpleTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\bin\Debug\net8.0\SimpleTest.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.GeneratedMSBuildEditorConfig.editorconfig
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.AssemblyInfoInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.AssemblyInfo.cs
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.csproj.CoreCompileInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.sourcelink.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\refint\SimpleTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\SimpleTest.genruntimeconfig.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\SimpleTest\obj\Debug\net8.0\ref\SimpleTest.dll

@@ -1,0 +1,15 @@
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\bin\Debug\net8.0\TestRiseEdge.exe
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\bin\Debug\net8.0\TestRiseEdge.deps.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\bin\Debug\net8.0\TestRiseEdge.runtimeconfig.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\bin\Debug\net8.0\TestRiseEdge.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\bin\Debug\net8.0\TestRiseEdge.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.GeneratedMSBuildEditorConfig.editorconfig
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.AssemblyInfoInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.AssemblyInfo.cs
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.csproj.CoreCompileInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.sourcelink.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\refint\TestRiseEdge.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\TestRiseEdge.genruntimeconfig.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\TestRiseEdge\obj\Debug\net8.0\ref\TestRiseEdge.dll
