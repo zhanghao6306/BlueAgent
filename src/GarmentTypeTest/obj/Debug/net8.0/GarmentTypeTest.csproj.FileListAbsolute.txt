@@ -1,0 +1,15 @@
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\bin\Debug\net8.0\GarmentTypeTest.exe
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\bin\Debug\net8.0\GarmentTypeTest.deps.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\bin\Debug\net8.0\GarmentTypeTest.runtimeconfig.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\bin\Debug\net8.0\GarmentTypeTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\bin\Debug\net8.0\GarmentTypeTest.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.GeneratedMSBuildEditorConfig.editorconfig
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.AssemblyInfoInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.AssemblyInfo.cs
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.csproj.CoreCompileInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.sourcelink.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\refint\GarmentTypeTest.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\GarmentTypeTest.genruntimeconfig.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\GarmentTypeTest\obj\Debug\net8.0\ref\GarmentTypeTest.dll

@@ -1,0 +1,15 @@
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\bin\Debug\net8.0\ModbusTestClient.exe
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\bin\Debug\net8.0\ModbusTestClient.deps.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\bin\Debug\net8.0\ModbusTestClient.runtimeconfig.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\bin\Debug\net8.0\ModbusTestClient.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\bin\Debug\net8.0\ModbusTestClient.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.GeneratedMSBuildEditorConfig.editorconfig
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.AssemblyInfoInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.AssemblyInfo.cs
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.csproj.CoreCompileInputs.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.sourcelink.json
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\refint\ModbusTestClient.dll
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.pdb
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ModbusTestClient.genruntimeconfig.cache
+F:\Job\Trae CN\测试源代码仓库\BlueAgent\src\ModbusTestClient\obj\Debug\net8.0\ref\ModbusTestClient.dll
