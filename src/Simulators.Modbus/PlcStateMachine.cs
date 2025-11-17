@@ -1,11 +1,24 @@
 using System;
 using System.Collections.Generic;
 
-/// <summary>
-/// PLC State Machine implementing the BlueImage platform protocol
-/// </summary>
-public class PlcStateMachine
+namespace Simulators.Modbus
+{
+    /// <summary>
+    /// PLC State Machine implementing the BlueImage platform protocol
+    /// </summary>
+    public class PlcStateMachine
     {
+        // Status values
+        private const ushort STATUS_READY = 1;
+        private const ushort STATUS_OK = 1;
+        private const ushort STATUS_RUNNING = 1;
+        private const ushort STATUS_STOPPED = 0;
+        private const ushort GARMENT_TYPE_NONE = 0;
+        private const ushort GARMENT_TYPE_MIN = 1;
+        private const ushort GARMENT_TYPE_MAX = 15;
+        private const ushort COIL_GARMENT_TYPE_NONE = 1090;
+        private const ushort COIL_GARMENT_TYPE_BASE = 1016;
+
         private ushort[] _registers;
         private bool[] _coils;
         private Dictionary<ushort, ushort> _previousRegisterValues;
@@ -31,9 +44,9 @@ public class PlcStateMachine
         private void InitializePlatformRegisters()
         {
             // Set Ready state
-            if (_registers.Length > 2060) _registers[2060] = 1;
+            if (_registers.Length > PlcRegisters.ReadyStatus) _registers[PlcRegisters.ReadyStatus] = STATUS_READY;
             // Set OK state
-            if (_registers.Length > 2069) _registers[2069] = 1;
+            if (_registers.Length > PlcRegisters.OkStatus) _registers[PlcRegisters.OkStatus] = STATUS_OK;
         }
 
         /// <summary>
@@ -63,21 +76,21 @@ public class PlcStateMachine
         private void HandleStartHandshake()
         {
             // Check D2000 for start signal (rise edge)
-            if (CheckRiseEdge(2000, 1))
+            if (CheckRiseEdge(PlcRegisters.StartHandshake, STATUS_READY))
             {
-                if (_coils.Length > 1000)
+                if (_coils.Length > PlcCoils.StartHandshakeAck)
                 {
-                    _coils[1000] = true;
+                    _coils[PlcCoils.StartHandshakeAck] = true;
                     Console.WriteLine("M1000 set to 1: Acknowledge start signal D2000");
                 }
             }
 
             // Check D2005 for client feedback acknowledgment (rise edge)
-            if (CheckRiseEdge(2005, 1))
+            if (CheckRiseEdge(PlcRegisters.ClientFeedbackAck, STATUS_READY))
             {
-                if (_coils.Length > 1015)
+                if (_coils.Length > PlcCoils.ClientFeedbackAck)
                 {
-                    _coils[1015] = true;
+                    _coils[PlcCoils.ClientFeedbackAck] = true;
                     Console.WriteLine("M1015 set to 1: Acknowledge feedback D2005");
                 }
             }
@@ -89,41 +102,41 @@ public class PlcStateMachine
         private void HandlePrintCompleteSignals()
         {
             // Foundation print complete (D2001 -> M1001)
-            if (CheckRiseEdge(2001, 1))
+            if (CheckRiseEdge(PlcRegisters.FoundationPrintComplete, STATUS_READY))
             {
-                if (_coils.Length > 1001)
+                if (_coils.Length > PlcCoils.FoundationPrintCompleteAck)
                 {
-                    _coils[1001] = true;
+                    _coils[PlcCoils.FoundationPrintCompleteAck] = true;
                     Console.WriteLine("M1001 set to 1: Foundation print complete");
                 }
             }
 
             // White print complete (D2002 -> M1002)
-            if (CheckRiseEdge(2002, 1))
+            if (CheckRiseEdge(PlcRegisters.WhitePrintComplete, STATUS_READY))
             {
-                if (_coils.Length > 1002)
+                if (_coils.Length > PlcCoils.WhitePrintCompleteAck)
                 {
-                    _coils[1002] = true;
+                    _coils[PlcCoils.WhitePrintCompleteAck] = true;
                     Console.WriteLine("M1002 set to 1: White print complete");
                 }
             }
 
             // Color print complete (D2003 -> M1003)
-            if (CheckRiseEdge(2003, 1))
+            if (CheckRiseEdge(PlcRegisters.ColorPrintComplete, STATUS_READY))
             {
-                if (_coils.Length > 1003)
+                if (_coils.Length > PlcCoils.ColorPrintCompleteAck)
                 {
-                    _coils[1003] = true;
+                    _coils[PlcCoils.ColorPrintCompleteAck] = true;
                     Console.WriteLine("M1003 set to 1: Color print complete");
                 }
             }
 
             // Topcoat print complete (D2004 -> M1004)
-            if (CheckRiseEdge(2004, 1))
+            if (CheckRiseEdge(PlcRegisters.TopcoatPrintComplete, STATUS_READY))
             {
-                if (_coils.Length > 1004)
+                if (_coils.Length > PlcCoils.TopcoatPrintCompleteAck)
                 {
-                    _coils[1004] = true;
+                    _coils[PlcCoils.TopcoatPrintCompleteAck] = true;
                     Console.WriteLine("M1004 set to 1: Topcoat print complete");
                 }
             }
@@ -135,41 +148,41 @@ public class PlcStateMachine
         private void HandlePlatformStartStop()
         {
             // Soft start request (D2006 -> M1013)
-            if (CheckRiseEdge(2006, 1))
+            if (CheckRiseEdge(PlcRegisters.PlatformSoftStart, STATUS_READY))
             {
-                if (_coils.Length > 1013)
+                if (_coils.Length > PlcCoils.PlatformSoftStartAck)
                 {
-                    _coils[1013] = true;
+                    _coils[PlcCoils.PlatformSoftStartAck] = true;
                     Console.WriteLine("M1013 set to 1: Soft start request acknowledged");
                 }
 
                 // Set platform running status
-                if (_registers.Length > 2068)
+                if (_registers.Length > PlcRegisters.PlatformStatus)
                 {
-                    _registers[2068] = 1;
+                    _registers[PlcRegisters.PlatformStatus] = STATUS_RUNNING;
                     Console.WriteLine("D2068 set to 1: Platform is running");
                 }
             }
 
             // Soft stop request (D2007 -> M1014)
-            if (CheckRiseEdge(2007, 1))
+            if (CheckRiseEdge(PlcRegisters.PlatformSoftStop, STATUS_READY))
             {
-                if (_coils.Length > 1014)
+                if (_coils.Length > PlcCoils.PlatformSoftStopAck)
                 {
-                    _coils[1014] = true;
+                    _coils[PlcCoils.PlatformSoftStopAck] = true;
                     Console.WriteLine("M1014 set to 1: Soft stop request acknowledged");
                 }
 
                 // Set platform stopped status
-                if (_registers.Length > 2068)
+                if (_registers.Length > PlcRegisters.PlatformStatus)
                 {
-                    _registers[2068] = 0;
+                    _registers[PlcRegisters.PlatformStatus] = STATUS_STOPPED;
                     Console.WriteLine("D2068 set to 0: Platform is stopped");
                 }
             }
 
             // Check if client confirmed platform running (M1068)
-            if (_coils.Length > 1068 && _coils[1068])
+            if (_coils.Length > PlcCoils.PlatformStatusAck && _coils[PlcCoils.PlatformStatusAck])
             {
                 Console.WriteLine("M1068: Client confirmed platform running");
             }
@@ -180,15 +193,15 @@ public class PlcStateMachine
         /// </summary>
         private void HandleGarmentType()
         {
-            if (_registers.Length <= 2050) return;
+            if (_registers.Length <= PlcRegisters.GarmentType) return;
 
-            ushort garmentType = _registers[2050];
+            ushort garmentType = _registers[PlcRegisters.GarmentType];
 
             // Only process if value has changed
-            if (!_previousRegisterValues.TryGetValue(2050, out ushort oldValue) || oldValue != garmentType)
+            if (!_previousRegisterValues.TryGetValue(PlcRegisters.GarmentType, out ushort oldValue) || oldValue != garmentType)
             {
                 // Reset all garment type coils
-                for (int i = 1016; i <= 1030; i++)
+                for (int i = COIL_GARMENT_TYPE_BASE; i <= COIL_GARMENT_TYPE_BASE + (GARMENT_TYPE_MAX - GARMENT_TYPE_MIN); i++)
                 {
                     if (i < _coils.Length)
                     {
@@ -196,17 +209,17 @@ public class PlcStateMachine
                     }
                 }
 
-                if (garmentType == 0)
+                if (garmentType == GARMENT_TYPE_NONE)
                 {
-                    if (_coils.Length > 1090)
+                    if (_coils.Length > COIL_GARMENT_TYPE_NONE)
                     {
-                        _coils[1090] = true;
+                        _coils[COIL_GARMENT_TYPE_NONE] = true;
                         Console.WriteLine("M1090 set to 1: Garment type 0 (none) confirmed");
                     }
                 }
-                else if (garmentType >= 1 && garmentType <= 15)
+                else if (garmentType >= GARMENT_TYPE_MIN && garmentType <= GARMENT_TYPE_MAX)
                 {
-                    int coilAddr = 1016 + (garmentType - 1);
+                    int coilAddr = COIL_GARMENT_TYPE_BASE + (garmentType - GARMENT_TYPE_MIN);
                     if (coilAddr < _coils.Length)
                     {
                         _coils[coilAddr] = true;
@@ -215,7 +228,7 @@ public class PlcStateMachine
                 }
                 else
                 {
-                    Console.WriteLine($"Invalid garment type: {garmentType}. Valid range: 0-15");
+                    Console.WriteLine($"Invalid garment type: {garmentType}. Valid range: {GARMENT_TYPE_NONE}-{GARMENT_TYPE_MAX}");
                 }
             }
         }
@@ -251,7 +264,17 @@ public class PlcStateMachine
         private void UpdatePreviousRegisterValues()
         {
             // Update values for important registers
-            ushort[] importantRegisters = { 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2050 };
+            ushort[] importantRegisters = { 
+                PlcRegisters.StartHandshake, 
+                PlcRegisters.FoundationPrintComplete, 
+                PlcRegisters.WhitePrintComplete, 
+                PlcRegisters.ColorPrintComplete, 
+                PlcRegisters.TopcoatPrintComplete, 
+                PlcRegisters.ClientFeedbackAck, 
+                PlcRegisters.PlatformSoftStart, 
+                PlcRegisters.PlatformSoftStop, 
+                PlcRegisters.GarmentType 
+            };
 
             foreach (ushort reg in importantRegisters)
             {
@@ -261,4 +284,5 @@ public class PlcStateMachine
                 }
             }
         }
+    }
 }
